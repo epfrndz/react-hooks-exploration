@@ -24,7 +24,7 @@ const charArray = [
 ];
 
 const listComp = () => {
-  return charArray.map(item => <Character name={item.name} race={item.race} status={item.status} comment={item.comment} />);
+  return charArray.map((item, i) => <Character key={i} name={item.name} race={item.race} status={item.status} comment={item.comment} />);
 }
 
 export default function App() {
