@@ -57,6 +57,8 @@ const Character = (props) => {
             />
 
             <br />
+            <br />
+            <hr />
         </div>
     )
 }
