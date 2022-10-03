@@ -24,6 +24,13 @@ const Character = (props) => {
             </p>
             <p>Gold: {gold}</p>
             <p className={props.comment ? 'visible' : 'hidden'}>Comment: {props.comment}</p>
+
+            <button onClick={() => {
+                setHealth(parseInt(health) + 10);
+                setGold(parseInt(gold) - 2);
+            }}>
+                Add 10 health (Costs 2 Gold)
+            </button>
         </div>
     )
 }
