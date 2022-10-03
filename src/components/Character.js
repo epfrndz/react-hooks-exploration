@@ -31,6 +31,13 @@ const Character = (props) => {
             }}>
                 Add 10 health (Costs 2 Gold)
             </button>
+
+            <button onClick={() => {
+                setStamina(parseInt(stamina) + 5);
+                setGold(parseInt(gold) - 1);
+            }}>
+                Add 5 stamina (Costs 2 Gold)
+            </button>
         </div>
     )
 }
