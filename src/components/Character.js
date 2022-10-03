@@ -47,6 +47,16 @@ const Character = (props) => {
                 Add 3 gold (Costs 10 Health and 5 Stamina)
             </button>
             <br />
+            <br />
+
+            <label htmlFor="nameChange">Change Player's Name: </label><br />
+            <input 
+                type="text"
+                id="nameChange"
+                onChange={(e) => setName(e.target.value)}
+            />
+
+            <br />
         </div>
     )
 }
