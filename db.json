@@ -12,6 +12,7 @@
       "comment": ""
     },
     {
+      "id": 2,
       "name": "Goerge",
       "race": "Demon",
       "status": "Enraged",
@@ -22,6 +23,7 @@
       "comment": "I'm so ANGRY!!!!"
     },
     {
+      "id": 3,
       "name": "Angela",
       "race": "Fairy",
       "status": "Full-Health",
