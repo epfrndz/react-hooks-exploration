@@ -1,61 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Character.css';
 
-const Character = (props) => {
-    // Name
-    const [name, setName] = useState(props.name)
+const Character = ({charInfo, updateCharInfo}) => {
 
-    // Health
-    const [health, setHealth] = useState(props.health)
-
-    // Stamina
-    const [stamina, setStamina] = useState(props.stamina)
-
-    // Gold
-    const [gold, setGold] = useState(props.gold)
-
-    // Location
-    const [location, setLocation] = useState(props.location)
-    
-    // Comment
-    const [comment, setComment] = useState(props.comment)
 
     // Change location, reduce gold
     const changeLocation = (newLocation) => {
-        setLocation(newLocation)
-        setGold(parseInt(gold) - 1)
+        const newGold = parseInt(charInfo.gold) - 1
+        changeCharacterProperty({
+            location: newLocation,
+            gold: newGold
+        })
+    }
+
+    // Update character property
+    const changeCharacterProperty = (newPropsAndVals) => {
+        const newCharInfo = {...charInfo,
+            ...newPropsAndVals
+        }
+
+        updateCharInfo(newCharInfo)
     }
 
     return (
         <div>
-            <h2>{name}'s Bio:</h2>
-            <p>Race: {props.race}</p>
+            <h2>{charInfo.name}'s Bio:</h2>
+            <p>Race: {charInfo.race}</p>
             <p>Status: <br />
-                Health at {health}<br />
-                Stamina at {stamina}<br />
+                Health at {charInfo.health}<br />
+                Stamina at {charInfo.stamina}<br />
             </p>
-            <p>Gold: {gold}</p>
-            <p>Location: {location}</p>
-            <p className={props.comment ? 'visible' : 'hidden'}>Comment: {comment}</p>
+            <p>Gold: {charInfo.gold}</p>
+            <p>Location: {charInfo.location}</p>
+            <p className={charInfo.comment ? 'visible' : 'hidden'}>Comment: {charInfo.comment}</p>
 
             <button onClick={() => {
-                setHealth(parseInt(health) + 10);
-                setGold(parseInt(gold) - 2);
+                changeCharacterProperty({
+                    health: parseInt(charInfo.health) + 10,
+                    gold: parseInt(charInfo.gold) - 2
+                });
             }}>
                 Add 10 health (Costs 2 Gold)
             </button>
             <br />
             <button onClick={() => {
-                setStamina(parseInt(stamina) + 5);
-                setGold(parseInt(gold) - 1);
+                changeCharacterProperty({
+                    stamina: parseInt(charInfo.stamina) + 5,
+                    gold: parseInt(charInfo.gold) - 1
+                });
             }}>
                 Add 5 stamina (Costs 1 Gold)
             </button>
             <br />
             <button onClick={() => {
-                setGold(parseInt(gold) + 3);
-                setHealth(parseInt(health) - 10);
-                setStamina(parseInt(stamina) - 5);
+                changeCharacterProperty({
+                    gold: parseInt(charInfo.gold) + 3,
+                    health: parseInt(charInfo.health) - 10,
+                    stamina: parseInt(charInfo.stamina) - 5
+                })
             }}>
                 Add 3 gold (Costs 10 Health and 5 Stamina)
             </button>
@@ -66,14 +68,18 @@ const Character = (props) => {
             <input 
                 type="text"
                 id="nameChange"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                    changeCharacterProperty({name: e.target.value})
+                }}
             />
-            <div className={comment ? 'visible' : 'hidden'}>
+            <div className={charInfo.comment ? 'visible' : 'hidden'}>
                 <label htmlFor="commentChange">Change Comment: </label><br />
                 <input 
                     type="text"
                     id="commentChange"
-                    onChange={(e) => setComment(e.target.value)}
+                    onChange={(e) => {
+                        changeCharacterProperty({comment: e.target.value})
+                    }}
                 />
             </div>
 

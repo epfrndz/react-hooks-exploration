@@ -6,9 +6,9 @@
       "race": "Human",
       "status": "Full-Health",
       "location": "Vancouver",
-      "health": 150,
-      "stamina": 200,
-      "gold": 75,
+      "health": 180,
+      "stamina": 210,
+      "gold": 56,
       "comment": ""
     },
     {
