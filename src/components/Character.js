@@ -6,13 +6,25 @@ const Character = (props) => {
     const [name, setName] = useState(props.name)
 
     // Health
-    const [health, setHealth] = useState('150')
+    const [health, setHealth] = useState(props.health)
 
     // Stamina
-    const [stamina, setStamina] = useState('200')
+    const [stamina, setStamina] = useState(props.stamina)
 
     // Gold
-    const [gold, setGold] = useState('75')
+    const [gold, setGold] = useState(props.gold)
+
+    // Location
+    const [location, setLocation] = useState(props.location)
+    
+    // Comment
+    const [comment, setComment] = useState(props.comment)
+
+    // Change location, reduce gold
+    const changeLocation = (newLocation) => {
+        setLocation(newLocation)
+        setGold(parseInt(gold) - 1)
+    }
 
     return (
         <div>
@@ -23,7 +35,8 @@ const Character = (props) => {
                 Stamina at {stamina}<br />
             </p>
             <p>Gold: {gold}</p>
-            <p className={props.comment ? 'visible' : 'hidden'}>Comment: {props.comment}</p>
+            <p>Location: {location}</p>
+            <p className={props.comment ? 'visible' : 'hidden'}>Comment: {comment}</p>
 
             <button onClick={() => {
                 setHealth(parseInt(health) + 10);
@@ -55,6 +68,27 @@ const Character = (props) => {
                 id="nameChange"
                 onChange={(e) => setName(e.target.value)}
             />
+            <div className={comment ? 'visible' : 'hidden'}>
+                <label htmlFor="commentChange">Change Comment: </label><br />
+                <input 
+                    type="text"
+                    id="commentChange"
+                    onChange={(e) => setComment(e.target.value)}
+                />
+            </div>
+
+            <form>
+                <label htmlFor="locationChange">Change Location (Cost 1 Gold): </label><br />
+                <input 
+                    type="text"
+                    id="locationChange"
+                    name="locationChange"
+                />
+                <input type="submit" onClick={(e) => {
+                    e.preventDefault();
+                    changeLocation(e.target.parentElement.locationChange.value)
+                }} />
+            </form>
 
             <br />
             <br />
