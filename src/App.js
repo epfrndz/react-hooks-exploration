@@ -78,7 +78,22 @@ export default function App() {
   // Update character information in database
   const updateCharacter = async (charObj) => {
     const charId = charObj.id
+    await fetch(`http://localhost:5500/characters/${charId}`, {
+      method: "PUT",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify(charObj)
+    })
     
+    const newCharInfo = []
+    
+    characters.forEach(character => {
+      if (character.id === charId) {
+        character = charObj
+      }
+      newCharInfo.push(character)
+    });
+
+    setCharacters(newCharInfo)
   } 
 
   console.log(characters)
