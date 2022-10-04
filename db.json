@@ -1,0 +1,35 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Mark",
+      "race": "Human",
+      "status": "Full-Health",
+      "location": "Vancouver",
+      "health": 150,
+      "stamina": 200,
+      "gold": 75,
+      "comment": ""
+    },
+    {
+      "name": "Goerge",
+      "race": "Demon",
+      "status": "Enraged",
+      "location": "Vancouver",
+      "health": 150,
+      "stamina": 200,
+      "gold": 75,
+      "comment": "I'm so ANGRY!!!!"
+    },
+    {
+      "name": "Angela",
+      "race": "Fairy",
+      "status": "Full-Health",
+      "location": "Vancouver",
+      "health": 150,
+      "stamina": 200,
+      "gold": 75,
+      "comment": ""
+    }
+  ]
+}
