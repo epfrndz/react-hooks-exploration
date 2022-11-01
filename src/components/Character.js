@@ -49,7 +49,7 @@ const Character = ({charInfo, updateCharInfo}) => {
                     gold: parseInt(charInfo.gold) - 1
                 });
             }}>
-                Add 5 stamina** (Costs 1 Gold)
+                Add 5 stamina!! (Costs 1 Gold)
             </button>
             <br />
             <button onClick={() => {
